@@ -1,0 +1,3 @@
+C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build/CMakeFiles/simple-perceptron.dir
+C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build/CMakeFiles/edit_cache.dir
+C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build/CMakeFiles/rebuild_cache.dir
