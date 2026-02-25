@@ -240,6 +240,15 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
+MonProjet_BINARY_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build
+
+//Value Computed by CMake
+MonProjet_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+MonProjet_SOURCE_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron
+
+//Value Computed by CMake
 simple-perceptron_BINARY_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build
 
 //Value Computed by CMake
