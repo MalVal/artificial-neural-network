@@ -3,11 +3,12 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <math.h>
 using namespace std;
 
 int main() {
     // Lecture du fichier CSV
-    ifstream file("../../data/and-binary.csv");
+    ifstream file("../../data/and.csv");
 
     if (!file.is_open()) {
         cerr << "Error when opening file..." << endl;
@@ -31,7 +32,7 @@ int main() {
 
     file.close();
 
-    // ==== Perceptron simple ====
+    // ==== Perceptron avec méthode de la descente du gradient ====
 
     // Fichiers résultats
     string dataCSV = "points.csv";
@@ -42,20 +43,31 @@ int main() {
 
     // Initialisation des poids synaptiques
     double w0 = 0, w1 = 0, w2 = 0;
-    // Nombre d'erreurs
-    int nbError = 0;
+    // Seuil de tolérence
+    double seuil = 0.125001;
     // Pas d'apprentissage
-    double n = 1;
+    double n = 0.2;
+    // Nombre max d'itérations
+    int nbIterMax = 100;
     // Numéro de l'itération
-    int epoch = 1;
+    int epoch = 0;
 
-    while(true) {
+    while(epoch < nbIterMax) {
+        // Initialisation des termes correcteurs (delta w)
+        double dw0 = 0, dw1 = 0, dw2 = 0;
+        cout << "==========================================================" << endl;
+        cout << "Epoque : " << epoch + 1 << endl;
+        cout << "Poids synaptiques :" << endl;
+        cout << "w0 = " << w0 << ", w1 = " << w1 << ", w2 = " << w2 << endl;
+
         int exampleNumber = 1;
+        double E = 0;
+
         for(const auto &row : data) {
-            cout << "================================" << endl;
+            cout << "=============================" << endl;
             cout << "Exemple : " << exampleNumber << endl;
-            cout << "Poids synaptiques :" << endl;
-            cout << "w0 = " << w0 << ", w1 = " << w1 << ", w2 = " << w2 << endl;
+            cout << "Correcteurs des poids synaptiques :" << endl;
+            cout << "dw0 = " << dw0 << ", dw1 = " << dw1 << ", dw2 = " << dw2 << endl;
 
             // Initialisation des entrées
             double x0 = 1, x1 = row[0], x2 = row[1];
@@ -68,50 +80,45 @@ int main() {
 
             // Calcul du potentiel
             double p = (w0 * x0) + (w1 * x1) + (w2 * x2);
+
             cout << "Potentiel = " << p << endl;
 
             // Sortie calculée
-            int y;
-            if(p >= 0) {
-                y = 1;
-            }
-            else {
-                y = 0;
-            }
+            double y = p;
             cout << "Sortie calculee : " << y << endl;
 
-            // Calcul de l'erreur
-            int e = d - y;
-            cout << "Erreur : " << e << endl;
+            // Calcul de l'erreur locale
+            double e = d - y;
+            cout << "Erreur locale : " << e << endl;
+            // Calcul de l'erreur quadriatique
+            E = E + (0.5 * e * e);
 
-            // Si il y a une erreur
-            if(e != 0) {
-                nbError++;
-                // Correction des poids synaptiques
-                w0 = w0 + n*e*x0;
-                w1 = w1 + n*e*x1;
-                w2 = w2 + n*e*x2; 
-            }
+            dw0 = dw0 + n*e*x0;
+            dw1 = dw1 + n*e*x1;
+            dw2 = dw2 + n*e*x2; 
 
             // Passage à l'exemple suivant
             exampleNumber++;
         }
 
-        // Ecriture dans le fichier errors.csv
-        errorFile << epoch << "," << nbError << endl;
+        // Correction des poids synaptiques
+        w0 = w0 + dw0;
+        w1 = w1 + dw1;
+        w2 = w2 + dw2;
 
-        // Si pas d'erreur -> apprentissage terminé
-        if(nbError == 0) {
+        // Calcul de l'erreur quadriatique moyenne
+        double Emoy = E / (exampleNumber - 1);
+
+        // Ecriture dans le fichier errors.csv
+        errorFile << epoch + 1 << "," << Emoy << endl;
+        
+        // Si l'erreur quadriatique moyenne est < au seuil -> apprentissage terminé
+        if(Emoy < seuil) {
             cout << "================================" << endl;
-            cout << "Aucune erreur commise... Apprentissage fini" << endl;
+            cout << "Apprentissage fini" << endl;
             cout << "================================" << endl;
             break;
         }
-        // Sinon reset du compteur
-        cout << "================================" << endl;
-        cout << "Nombre d'erreur(s) commise(s) : " << nbError << endl;
-        cout << "================================" << endl;
-        nbError = 0;
 
         // Passage à l'itération suivante
         epoch++;
