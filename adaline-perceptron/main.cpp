@@ -35,7 +35,7 @@ int main() {
     double threshold = 0.1251;
     int maxIter = 10000;
 
-    AdalinePerceptron perceptron(nFeatures, learningRate, threshold, maxIter, StopCriterion::ZERO_ERRORS);
+    AdalinePerceptron perceptron(nFeatures, learningRate, threshold, maxIter);
     perceptron.train(data, errorCSV);
     perceptron.saveModel(modelCSV);
     std::ofstream dataFile(pointsCSV);

@@ -32,25 +32,24 @@ void AdalinePerceptron::train(const vector<vector<int>>& data, const string& err
 
     int epoch = 0;
     while (epoch < maxIter) {
-        double E = 0;
-        int nbErrors = 0;
-
         for (const auto& row : data) {
             vector<double> x(row.begin(), row.end() - 1);
             int d = row.back();
-
             double y = predict(x);
             double e = d - y;
-
-            // Mise à jour des poids
-            weights[0] += learningRate * e * 1.0;
-            for (size_t i = 0; i < x.size(); i++) {
+            weights[0] += learningRate * e;
+            for (size_t i = 0; i < x.size(); i++)
                 weights[i+1] += learningRate * e * x[i];
-            }
+        }
 
+        double E = 0;
+        int nbErrors = 0;
+        for (const auto& row : data) {
+            vector<double> x(row.begin(), row.end() - 1);
+            int d = row.back();
+            double y = predict(x);
+            double e = d - y;
             E += 0.5 * e * e;
-
-            // Comptage des erreurs de classification (signe prédit vs attendu)
             int yClass = (y >= 0.0) ? 1 : -1;
             if (yClass != d) nbErrors++;
         }
