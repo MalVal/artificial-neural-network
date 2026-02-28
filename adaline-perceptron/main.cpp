@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "GradientPerceptron.h"
+#include "AdalinePerceptron.h"
 
 int main() {
     std::string modelCSV = "model.csv";
@@ -31,11 +31,11 @@ int main() {
     file.close();
 
     int nFeatures = 2;
-    double learningRate = 0.2;
-    double threshold = 0.125001;
-    int maxIter = 100;
+    double learningRate = 0.03;
+    double threshold = 0.1251;
+    int maxIter = 10000;
 
-    GradientPerceptron perceptron(nFeatures, learningRate, threshold, maxIter, StopCriterion::ZERO_ERRORS);
+    AdalinePerceptron perceptron(nFeatures, learningRate, threshold, maxIter, StopCriterion::ZERO_ERRORS);
     perceptron.train(data, errorCSV);
     perceptron.saveModel(modelCSV);
     std::ofstream dataFile(pointsCSV);

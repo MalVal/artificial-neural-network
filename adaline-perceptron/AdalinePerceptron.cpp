@@ -1,9 +1,9 @@
-#include "GradientPerceptron.h"
+#include "AdalinePerceptron.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
 
-GradientPerceptron::GradientPerceptron(int nFeatures, double lr, double seuil, int maxIter, StopCriterion criterion)
+AdalinePerceptron::AdalinePerceptron(int nFeatures, double lr, double seuil, int maxIter, StopCriterion criterion)
 : weights(nFeatures + 1, 0.0),
     learningRate(lr),
     threshold(seuil),
@@ -11,7 +11,7 @@ GradientPerceptron::GradientPerceptron(int nFeatures, double lr, double seuil, i
     criterion(criterion)
 {}
 
-double GradientPerceptron::predict(const vector<double>& x) const {
+double AdalinePerceptron::predict(const vector<double>& x) const {
     if (x.size() != weights.size() - 1) {
         cerr << "Error: input size does not match number of features" << endl;
         return -1;
@@ -23,7 +23,7 @@ double GradientPerceptron::predict(const vector<double>& x) const {
     return sum; // sortie linéaire
 }
 
-void GradientPerceptron::train(const vector<vector<int>>& data, const string& errorFile) {
+void AdalinePerceptron::train(const vector<vector<int>>& data, const string& errorFile) {
     ofstream ef(errorFile);
     if (!ef.is_open()) {
         cerr << "Cannot open error file: " << errorFile << endl;
@@ -34,7 +34,6 @@ void GradientPerceptron::train(const vector<vector<int>>& data, const string& er
     while (epoch < maxIter) {
         double E = 0;
         int nbErrors = 0;
-        vector<double> delta(weights.size(), 0.0);
 
         for (const auto& row : data) {
             vector<double> x(row.begin(), row.end() - 1);
@@ -43,22 +42,17 @@ void GradientPerceptron::train(const vector<vector<int>>& data, const string& er
             double y = predict(x);
             double e = d - y;
 
-            E += 0.5 * e * e;
-
-            // Gradient
-            delta[0] += learningRate * e * 1.0;
+            // Mise à jour des poids
+            weights[0] += learningRate * e * 1.0;
             for (size_t i = 0; i < x.size(); i++) {
-                delta[i+1] += learningRate * e * x[i];
+                weights[i+1] += learningRate * e * x[i];
             }
 
-            // Comptage erreurs de classification
+            E += 0.5 * e * e;
+
+            // Comptage des erreurs de classification (signe prédit vs attendu)
             int yClass = (y >= 0.0) ? 1 : -1;
             if (yClass != d) nbErrors++;
-        }
-
-        // Mise à jour des poids
-        for (size_t i = 0; i < weights.size(); i++) {
-            weights[i] += delta[i];
         }
 
         double Emean = E / data.size();
@@ -66,6 +60,7 @@ void GradientPerceptron::train(const vector<vector<int>>& data, const string& er
         cout << "Epoch " << epoch+1 << " - Emean = " << Emean
              << " - NbErrors = " << nbErrors << endl;
 
+        // Critère d'arrêt
         bool stop = false;
         if (criterion == StopCriterion::MSE_THRESHOLD && Emean < threshold)
             stop = true;
@@ -83,7 +78,7 @@ void GradientPerceptron::train(const vector<vector<int>>& data, const string& er
     ef.close();
 }
 
-void GradientPerceptron::saveModel(const string& filename) const {
+void AdalinePerceptron::saveModel(const string& filename) const {
     ofstream modelFile(filename);
     if (!modelFile.is_open()) {
         cerr << "Cannot open model file: " << filename << endl;
