@@ -138,8 +138,8 @@ int main() {
     dataFile.close();
 
     // Affichage des graphiques
-    system(("python ../model-point.py " + dataCSV + " " + modelCSV).c_str());
-    system(("python ../error-epoch.py " + errorCSV).c_str());
+    system(("python ../../scripts/model-point.py " + dataCSV + " " + modelCSV).c_str());
+    system(("python ../../scripts/error-epoch.py " + errorCSV).c_str());
 
     return 0;
 }

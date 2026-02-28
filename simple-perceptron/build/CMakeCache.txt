@@ -240,15 +240,6 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-MonProjet_BINARY_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build
-
-//Value Computed by CMake
-MonProjet_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-MonProjet_SOURCE_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron
-
-//Value Computed by CMake
 simple-perceptron_BINARY_DIR:STATIC=C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/simple-perceptron/build
 
 //Value Computed by CMake
@@ -418,29 +409,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[C:/Python313/python.exe][C:/Python313/libs/python313.lib][C:/Python313/include][cfound components: Interpreter Development Development.Module Development.Embed ][v3.13.3()]
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
-//Compiler reason failure
-_Python3_Compiler_REASON_FAILURE:INTERNAL=
-_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=8bab5a3c64cca47a70fc500354e6470d
-_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=8bab5a3c64cca47a70fc500354e6470d
-//Development reason failure
-_Python3_Development_REASON_FAILURE:INTERNAL=
-//Path to a program.
-_Python3_EXECUTABLE:INTERNAL=C:/Python313/python.exe
-//Path to a file.
-_Python3_INCLUDE_DIR:INTERNAL=C:/Python313/include
-//Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;3;64;;cp313-win_amd64;;C:\Python313\Lib;C:\Python313\Lib;C:\Python313\Lib\site-packages;C:\Python313\Lib\site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=7e36546b5e31c248c960732ed52b5836
-//Path to a library.
-_Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
-//Path to a library.
-_Python3_LIBRARY_RELEASE:INTERNAL=C:/Python313/libs/python313.lib
-//NumPy reason failure
-_Python3_NumPy_REASON_FAILURE:INTERNAL=
-//Path to a library.
-_Python3_RUNTIME_LIBRARY_RELEASE:INTERNAL=C:/Python313/python313.dll
 
