@@ -47,6 +47,16 @@ build cmake_object_order_depends_target_gradient-perceptron: phony || .
 build CMakeFiles/gradient-perceptron.dir/main.cpp.obj: CXX_COMPILER__gradient-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux$ de$ neurones$ articifiels/Projet/artificial-neural-network/gradient-perceptron/main.cpp || cmake_object_order_depends_target_gradient-perceptron
   DEP_FILE = CMakeFiles\gradient-perceptron.dir\main.cpp.obj.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I"C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/gradient-perceptron"
+  OBJECT_DIR = CMakeFiles\gradient-perceptron.dir
+  OBJECT_FILE_DIR = CMakeFiles\gradient-perceptron.dir
+  TARGET_COMPILE_PDB = CMakeFiles\gradient-perceptron.dir\
+  TARGET_PDB = gradient-perceptron.pdb
+
+build CMakeFiles/gradient-perceptron.dir/GradientPerceptron.cpp.obj: CXX_COMPILER__gradient-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux$ de$ neurones$ articifiels/Projet/artificial-neural-network/gradient-perceptron/GradientPerceptron.cpp || cmake_object_order_depends_target_gradient-perceptron
+  DEP_FILE = CMakeFiles\gradient-perceptron.dir\GradientPerceptron.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I"C:/Users/ironv/Documents/HEPL/MASI1/Q2/Réseaux de neurones articifiels/Projet/artificial-neural-network/gradient-perceptron"
   OBJECT_DIR = CMakeFiles\gradient-perceptron.dir
   OBJECT_FILE_DIR = CMakeFiles\gradient-perceptron.dir
   TARGET_COMPILE_PDB = CMakeFiles\gradient-perceptron.dir\
@@ -60,7 +70,7 @@ build CMakeFiles/gradient-perceptron.dir/main.cpp.obj: CXX_COMPILER__gradient-pe
 #############################################
 # Link the executable gradient-perceptron.exe
 
-build gradient-perceptron.exe: CXX_EXECUTABLE_LINKER__gradient-perceptron_ CMakeFiles/gradient-perceptron.dir/main.cpp.obj
+build gradient-perceptron.exe: CXX_EXECUTABLE_LINKER__gradient-perceptron_ CMakeFiles/gradient-perceptron.dir/main.cpp.obj CMakeFiles/gradient-perceptron.dir/GradientPerceptron.cpp.obj
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\gradient-perceptron.dir
   POST_BUILD = cd .
