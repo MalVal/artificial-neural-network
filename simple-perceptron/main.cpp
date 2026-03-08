@@ -9,6 +9,7 @@
 int main() {
     std::string modelCSV = "model.csv", pointsCVS = "points.csv", errorCSV = "errors.csv";
 
+    // OPEN DATASET
     std::ifstream file("../../data/and-binary.csv");
     if (!file.is_open()) {
         std::cerr << "Error opening file..." << std::endl;
@@ -27,7 +28,12 @@ int main() {
     }
     file.close();
 
-    SimplePerceptron perceptron(2, 1.0);  // learning rate
+    // PARAMETERS
+    int nFeatures = 2;
+    double learningRate = 1.0;
+
+    // LEARNING
+    SimplePerceptron perceptron(nFeatures, learningRate);
     perceptron.train(data, errorCSV);
     perceptron.saveModel(modelCSV);
     std::ofstream dataFile(pointsCVS);
@@ -37,10 +43,10 @@ int main() {
                  << row[2] << std::endl;
     }
     dataFile.close();
-
     std::cout << "Training complete." << std::endl;
     std::cout << "Model saved to model.csv" << std::endl;
 
+    // GUI
     system(("python ../../scripts/model-point.py " + pointsCVS + " " + modelCSV).c_str());
     system(("python ../../scripts/error-epoch.py " + errorCSV).c_str());
 

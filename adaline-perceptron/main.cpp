@@ -11,7 +11,30 @@ int main() {
     std::string pointsCSV = "points.csv";
     std::string errorCSV = "errors.csv";
 
-    std::ifstream file("../../data/and.csv");
+    // AVAILABLE DATASETS, nb features, learning rate, threshold, max iter
+    std::vector<std::vector<std::string>> availableDatasets = {
+        {"../../data/and.csv", "2", "0.3", "0.1251", "10000"},
+        {"../../data/table_2_9.csv", "2", "0.012", "0.1251", "1000"},
+        {"../../data/table_2_10.csv", "2", "0.0015", "0.1251", "1000"},
+        {"../../data/table_2_11.csv", "1", "0.00014", "0.1251", "10000"}
+    };
+
+    // CHOOSE DATASET
+    std::cout << "Choisissez un dataset :\n";
+    for (int i = 0; i < availableDatasets.size(); i++) {
+        std::cout << i << ". " << availableDatasets[i][0] << "\n";
+    }
+    int choice;
+    std::cout << "Dataset :";
+    std::cin >> choice;
+    if (choice < 0 || choice >= availableDatasets.size()) {
+        std::cerr << "Choix invalide.\n";
+        return 1;
+    }
+    std::vector<std::string> selectedDataset = availableDatasets[choice];
+
+    // OPEN DATASET
+    std::ifstream file(selectedDataset[0]);
     if (!file.is_open()) {
         std::cerr << "Error opening file..." << std::endl;
         return 1;
@@ -30,11 +53,13 @@ int main() {
     }
     file.close();
 
-    int nFeatures = 2;
-    double learningRate = 0.03;
-    double threshold = 0.1251;
-    int maxIter = 10000;
+    // PARAMETERS
+    int nFeatures = std::stod(selectedDataset[1]);
+    double learningRate = std::stod(selectedDataset[2]);
+    double threshold = std::stod(selectedDataset[3]);
+    int maxIter = std::stod(selectedDataset[4]);
 
+    // LEARNING
     AdalinePerceptron perceptron(nFeatures, learningRate, threshold, maxIter);
     perceptron.train(data, errorCSV);
     perceptron.saveModel(modelCSV);
@@ -45,10 +70,10 @@ int main() {
                  << row[2] << std::endl;
     }
     dataFile.close();
-
     std::cout << "Training complete." << std::endl;
     std::cout << "Model saved to model.csv" << std::endl;
 
+    // GUI
     system(("python ../../scripts/model-point.py " + pointsCSV + " " + modelCSV).c_str());
     system(("python ../../scripts/error-epoch.py " + errorCSV).c_str());
 

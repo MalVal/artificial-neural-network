@@ -2,40 +2,54 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-# =============================
-# Lecture des fichiers
-# =============================
 data_file = sys.argv[1]
 model_file = sys.argv[2]
 
 data = np.loadtxt(data_file, delimiter=",")
-w0, w1, w2 = np.loadtxt(model_file, delimiter=",")
-
-x1 = data[:,0]
-x2 = data[:,1]
-labels = data[:,2]
+weights = np.loadtxt(model_file, delimiter=",")
 
 # =============================
-# Calcul de la droite de séparation
+# Régression 1D : 2 poids (w0, w1)
 # =============================
-if w2 != 0:
-    # Étendue des points + marge
-    x_min, x_max = x1.min() - 0.5, x1.max() + 0.5
-    x_vals = np.linspace(x_min, x_max, 200)
-    y_vals = (-w0 - w1*x_vals) / w2
-    plt.plot(x_vals, y_vals, color='green', label="Frontière de décision")
+if len(weights) == 2:
+    w0, w1 = weights
+    x = data[:, 0]
+    y = data[:, 1]
+
+    x_vals = np.linspace(x.min() - 0.5, x.max() + 0.5, 200)
+    y_vals = w0 + w1 * x_vals
+
+    plt.scatter(x, y, color='blue', edgecolors='k', s=80, label="Données")
+    plt.plot(x_vals, y_vals, color='green', label="Droite de régression")
+    plt.title("Régression")
+    plt.xlabel("x")
+    plt.ylabel("y")
+
+# =============================
+# Classification 2D : 3 poids (w0, w1, w2)
+# =============================
+elif len(weights) == 3:
+    w0, w1, w2 = weights
+    x1 = data[:, 0]
+    x2 = data[:, 1]
+    labels = data[:, 2]
+
+    if w2 != 0:
+        x_vals = np.linspace(x1.min() - 0.5, x1.max() + 0.5, 200)
+        y_vals = (-w0 - w1 * x_vals) / w2
+        plt.plot(x_vals, y_vals, color='green', label="Frontière de décision")
+    else:
+        plt.axvline(x=-w0 / w1, color='green', label="Frontière (verticale)")
+
+    plt.scatter(x1, x2, c=labels, cmap="bwr", edgecolors="k", s=80)
+    plt.title("Classification")
+    plt.xlabel("x1")
+    plt.ylabel("x2")
+
 else:
-    # Cas où w2 = 0 -> droite verticale
-    x_vert = -w0 / w1
-    plt.axvline(x=x_vert, color='green', label="Frontière de décision (verticale)")
+    print(f"Nombre de poids non supporté : {len(weights)}")
+    sys.exit(1)
 
-# =============================
-# Affichage des points
-# =============================
-plt.scatter(x1, x2, c=labels, cmap="bwr", edgecolors="k", s=80)
-plt.title("Perceptron - Frontière de décision")
-plt.xlabel("x1")
-plt.ylabel("x2")
 plt.legend()
 plt.grid(True)
 plt.show()
