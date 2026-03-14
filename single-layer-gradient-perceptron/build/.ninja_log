@@ -1,3 +1,5 @@
 # ninja log v6
-10	483	7951962674909447	CMakeFiles/single-layer-gradient-perceptron.dir/d93338aac73148b39a576775cf5e5102/GradientPerceptron.cpp.obj	b89a74140061731
-3	691	7951962674849007	CMakeFiles/single-layer-gradient-perceptron.dir/main.cpp.obj	6355f2a8ee912061
+10	496	7951964290300665	CMakeFiles/single-layer-gradient-perceptron.dir/C_/Users/ironv/Documents/artificial-neural-network/gradient-perceptron/GradientPerceptron.cpp.obj	6f6bcf9306f171aa
+15	512	7951964290365621	CMakeFiles/single-layer-gradient-perceptron.dir/C_/Users/ironv/Documents/artificial-neural-network/helpers/SingleLayerDatasetConverter.cpp.obj	463fc9b59cdb40eb
+4	682	7951964290245652	CMakeFiles/single-layer-gradient-perceptron.dir/main.cpp.obj	6d86faf84fb0f71c
+683	803	7951964297026418	single-layer-gradient-perceptron.exe	ec8672528c907205
