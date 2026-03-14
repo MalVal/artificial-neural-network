@@ -23,7 +23,7 @@ double AdalinePerceptron::predict(const vector<double>& x) const {
     return sum; // sortie linéaire
 }
 
-void AdalinePerceptron::train(const vector<vector<int>>& data, const string& errorFile) {
+void AdalinePerceptron::train(const vector<vector<double>>& data, const string& errorFile) {
     ofstream ef(errorFile);
     if (!ef.is_open()) {
         cerr << "Cannot open error file: " << errorFile << endl;
@@ -77,8 +77,8 @@ void AdalinePerceptron::train(const vector<vector<int>>& data, const string& err
     ef.close();
 }
 
-void AdalinePerceptron::saveModel(const string& filename) const {
-    ofstream modelFile(filename);
+void AdalinePerceptron::saveModel(const string& filename, bool append) const {
+    ofstream modelFile(filename, append ? ios::app : ios::trunc);
     if (!modelFile.is_open()) {
         cerr << "Cannot open model file: " << filename << endl;
         return;

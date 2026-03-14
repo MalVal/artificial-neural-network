@@ -71,16 +71,15 @@ void SimplePerceptron::train(const vector<vector<int>>& data, const string& erro
     errorFile.close();
 }
 
-void SimplePerceptron::saveModel(const string& filename) const {
-    ofstream modelFile(filename);
+void SimplePerceptron::saveModel(const std::string& filename, bool append) const {
+    ofstream modelFile(filename, append ? ios::app : ios::trunc);
     if (!modelFile.is_open()) {
         cerr << "Cannot open model file: " << filename << endl;
         return;
     }
     for (size_t i = 0; i < weights.size(); i++) {
         modelFile << weights[i];
-        if (i != weights.size() - 1)
-            modelFile << ",";
+        if (i != weights.size() - 1) modelFile << ",";
     }
     modelFile << endl;
     modelFile.close();

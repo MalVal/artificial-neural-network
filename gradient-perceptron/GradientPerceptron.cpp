@@ -23,7 +23,7 @@ double GradientPerceptron::predict(const vector<double>& x) const {
     return sum; // sortie linéaire
 }
 
-void GradientPerceptron::train(const vector<vector<int>>& data, const string& errorFile) {
+void GradientPerceptron::train(const vector<vector<double>>& data, const string& errorFile) {
     ofstream ef(errorFile);
     if (!ef.is_open()) {
         cerr << "Cannot open error file: " << errorFile << endl;
@@ -83,8 +83,8 @@ void GradientPerceptron::train(const vector<vector<int>>& data, const string& er
     ef.close();
 }
 
-void GradientPerceptron::saveModel(const string& filename) const {
-    ofstream modelFile(filename);
+void GradientPerceptron::saveModel(const string& filename, bool append) const {
+    ofstream modelFile(filename, append ? ios::app : ios::trunc);
     if (!modelFile.is_open()) {
         cerr << "Cannot open model file: " << filename << endl;
         return;

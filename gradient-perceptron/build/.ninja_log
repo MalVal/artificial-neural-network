@@ -32,3 +32,6 @@
 112	1101	7946719376688482	CMakeFiles/gradient-perceptron.dir/GradientPerceptron.cpp.obj	b42118bf23f896c3
 100	1479	7946719376578579	CMakeFiles/gradient-perceptron.dir/main.cpp.obj	1e27a80b9108911d
 1482	1752	7946719390389251	gradient-perceptron.exe	ec95e6a0e15e9f19
+41	491	7951943253878808	CMakeFiles/gradient-perceptron.dir/GradientPerceptron.cpp.obj	b42118bf23f896c3
+36	656	7951943253821013	CMakeFiles/gradient-perceptron.dir/main.cpp.obj	1e27a80b9108911d
+657	770	7951943260024644	gradient-perceptron.exe	ec95e6a0e15e9f19

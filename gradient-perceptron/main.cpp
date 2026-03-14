@@ -39,15 +39,15 @@ int main() {
         std::cerr << "Error opening file..." << std::endl;
         return 1;
     }
-    std::vector<std::vector<int>> data;
+    std::vector<std::vector<double>> data;
     std::string line;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string cell;
-        std::vector<int> row;
+        std::vector<double> row;
 
         while (std::getline(ss, cell, ',')) {
-            row.push_back(std::stoi(cell));
+            row.push_back(std::stod(cell));
         }
         data.push_back(row);
     }
