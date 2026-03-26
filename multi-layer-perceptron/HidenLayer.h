@@ -13,7 +13,7 @@ private:
     double learningRate;
 public:
     HidenLayer(int entryNumber, int neuronNumber, std::function<double(double, double)> activate, std::function<double(double, double)> derivative, double learningRate);
-    std::vector<double> propagate(const vector<double>& x);
+    std::vector<double> propagate(const std::vector<double>& x);
     void changeNeuronWeights(int neuronNumber, std::vector<double> newWeights);
     // GETTERS
     int getEntryNumber() const;

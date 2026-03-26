@@ -1,0 +1,9 @@
+# ninja log v6
+23	549	7962427211925592	CMakeFiles/multi-layer-perceptron.dir/C_/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp.obj	da5aef6916e54632
+14	1272	7962427211818635	CMakeFiles/multi-layer-perceptron.dir/HidenNeuron.cpp.obj	f368e13b0a318c3f
+29	710	7962427584450783	CMakeFiles/multi-layer-perceptron.dir/HidenLayer.cpp.obj	451eb80bcfd99cfc
+6	651	7962428952302841	CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj	fc97ef84e8002d82
+11	680	7962428952353653	CMakeFiles/multi-layer-perceptron.dir/MultiLayerPerceptron.cpp.obj	797161f590df10b1
+681	841	7962428959056166	multi-layer-perceptron.exe	159a01ea5e6569f4
+24	649	7962429946416914	CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj	fc97ef84e8002d82
+651	764	7962429952669825	multi-layer-perceptron.exe	159a01ea5e6569f4
