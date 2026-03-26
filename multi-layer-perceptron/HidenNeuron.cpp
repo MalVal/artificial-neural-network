@@ -21,12 +21,12 @@ double HidenNeuron::predict(const vector<double>& x) const {
 
 double HidenNeuron::getOutput(const vector<double>& x) {
     lastEntry = x;
-    lastPotential = predict(x);
-    double y = activation(1.0, lastPotential);
-    return y;
+    lastPotential = predict(lastEntry);
+    lastOutput = activation(1.0, lastPotential);
+    return lastOutput;
 }
 
-double HidenNeuron::getPotential() const {
+double HidenNeuron::getLastPotential() const {
     return lastPotential;
 }
 
@@ -34,7 +34,15 @@ vector<double> HidenNeuron::getLastEntry() const {
     return lastEntry;
 }
 
-void HidenNeuron::changeWeights(std::vector<double> &newWeights) {
+double HidenNeuron::getLastOutput() const {
+    return lastOutput;
+}
+
+vector<double> HidenNeuron::getWeights() const {
+    return weights;
+}
+
+void HidenNeuron::changeWeights(vector<double> &newWeights) {
     for(int i = 0; i < weights.size(); i++) {
         weights[i] += newWeights[i];
     }

@@ -10,42 +10,80 @@ MultiLayerPerceptron::MultiLayerPerceptron(vector<int> layersDefinition, int ent
     }
 }
 
-void MultiLayerPerceptron::learn(vector<double> x, vector<double> d, double threshold) {
-    // Propagate the data in each layer
-    vector<double> layerOutput = hiddenLayers[0].propagate(x);
-    for(int i = 1; i < hiddenLayers.size(); i++) {
-        layerOutput = hiddenLayers[i].propagate(layerOutput);
-    }
-    // Error calculation
-    double e = 0.0;
-    for(int i = 0; i < layerOutput.size(); i++) {
-        e += pow(d[i] - layerOutput[i], 2);
-    }
-    // Check if we continue
-    if(e/2 < threshold) {
-        return;
-    }
-    // Error signal calculation of output layer
-    vector<double> outputLayerErrorSignals;
-    vector<double> outputLayerPotentials = hiddenLayers.back().getLastPotentials();
-    for(int i = 0; i < layerOutput.size(); i++) {
-        double signal = (d[i] - layerOutput[i]) * (hiddenLayers[i].getDerivative()(1, outputLayerPotentials[i]));
-        outputLayerErrorSignals.push_back(signal);
-    }
-    // Error signal calculation of hidden layers
-
-    // Change ouput layer neuron weights
-    HidenLayer outputLayer = hiddenLayers.back();
-    for(int i = 0; i < outputLayer.getNeuronNumber(); i++) {
-        vector<double> newWeights;
-        double signalError = outputLayerErrorSignals[i];
-        vector<double> lastEntry = outputLayer.getLastEntry(i);
-        for(int j = 0; j < outputLayer.getEntryNumber(); j++) {
-            double weight = outputLayer.getLearningRate() * signalError * lastEntry[j];
-            newWeights.push_back(weight);
+void MultiLayerPerceptron::learn(vector<double> x, vector<double> d, double threshold, int maxIter) {
+    int epoch = 0;
+    while(epoch < maxIter) {
+        // Propagate the data in each layer
+        vector<double> layerOutput = hiddenLayers[0].propagate(x);
+        for(int i = 1; i < (int)hiddenLayers.size(); i++) {
+            layerOutput = hiddenLayers[i].propagate(layerOutput);
         }
-        outputLayer.changeNeuronWeights(i, newWeights);
-    }
-    // Change hidden layer neuron weights
 
+        // Error calculation on the output layer output
+        double e = 0.0;
+        for(int i = 0; i < (int)layerOutput.size(); i++) {
+            e += pow(d[i] - layerOutput[i], 2);
+        }
+
+        // Check if we continue
+        if(e / 2.0 < threshold) {
+            break;
+        }
+
+        // Get the last layer (output layer)
+        HidenLayer& outputLayer = hiddenLayers.back();
+
+        // Error signal calculation of output layer
+        for(int i = 0; i < outputLayer.getNeuronNumber(); i++) {
+            double signal = (d[i] - outputLayer.getLastOutput(i))
+                          * outputLayer.getDerivative()(1.0, outputLayer.getLastPotential(i));
+            outputLayer.setNeuronLastSignal(i, signal);
+        }
+
+        // Correction of weights for output layer
+        for(int i = (int)hiddenLayers.size() - 2; i >= 0; i--) {
+            HidenLayer& currentLayer = hiddenLayers[i];
+            HidenLayer& nextLayer = hiddenLayers[i + 1];
+            for(int j = 0; j < currentLayer.getNeuronNumber(); j++) {
+                double signal = currentLayer.getDerivative()(1.0, currentLayer.getLastPotential(j));
+                double sum = 0.0;
+                for(int s = 0; s < nextLayer.getNeuronNumber(); s++) {
+                    sum += nextLayer.getNeuronLastSignal(s) * nextLayer.getNeuronWeights(s)[j+1];
+                }
+                signal *= sum;
+                currentLayer.setNeuronLastSignal(j, signal);
+            }
+        }
+
+        // Error signal calculation of other layers
+        for(int i = 0; i < outputLayer.getNeuronNumber(); i++) {
+            double signal = outputLayer.getNeuronLastSignal(i);
+            vector<double> lastEntry = outputLayer.getLastEntry(i);
+            vector<double> newWeights;
+            // Biais (weights[0]) → entrée fictive = 1.0
+            newWeights.push_back(outputLayer.getLearningRate() * signal * 1.0);
+            for(int j = 0; j < outputLayer.getEntryNumber(); j++) {
+                newWeights.push_back(outputLayer.getLearningRate() * signal * lastEntry[j]);
+            }
+            outputLayer.changeNeuronWeights(i, newWeights);
+        }
+
+        // Correction of weights for other layers
+        for(int i = (int)hiddenLayers.size() - 2; i >= 0; i--) {
+            HidenLayer& currentLayer = hiddenLayers[i];
+            for(int j = 0; j < currentLayer.getNeuronNumber(); j++) {
+                double signal = currentLayer.getNeuronLastSignal(j);
+                vector<double> lastEntry = currentLayer.getLastEntry(j);
+                vector<double> newWeights;
+                // Biais
+                newWeights.push_back(currentLayer.getLearningRate() * signal * 1.0);
+                for(int s = 0; s < currentLayer.getEntryNumber(); s++) {
+                    newWeights.push_back(currentLayer.getLearningRate() * signal * lastEntry[s]);
+                }
+                currentLayer.changeNeuronWeights(j, newWeights);
+            }
+        }
+
+        epoch++;
+    }
 }

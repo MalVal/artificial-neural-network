@@ -9,7 +9,7 @@ private:
     std::vector<HidenLayer> hiddenLayers;
 public:
     MultiLayerPerceptron(std::vector<int> layersDefinition, int entryNumber);
-    void learn(std::vector<double> x, std::vector<double> d, double threshold);
+    void learn(std::vector<double> x, std::vector<double> d, double threshold, int maxIter);
 };
 
 #endif
