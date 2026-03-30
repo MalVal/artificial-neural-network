@@ -3,12 +3,13 @@
 
 #include <vector>
 #include "HidenLayer.h"
+#include "HiddenLayerDefinition.h"
 
 class MultiLayerPerceptron {
 private:
     std::vector<HidenLayer> hiddenLayers;
 public:
-    MultiLayerPerceptron(std::vector<int> layersDefinition, int entryNumber);
+    MultiLayerPerceptron(std::vector<HidenLayerDefinition> layersDefinition);
     void learn(std::vector<std::vector<double>> X, std::vector<std::vector<double>> D, double threshold, int maxIter);
     std::vector<double> predict(std::vector<double> x);
 };

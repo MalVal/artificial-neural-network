@@ -10,6 +10,7 @@ add_executable(multi-layer-perceptron)
 target_sources(multi-layer-perceptron PRIVATE
     main.cpp
     HidenLayer.cpp
+    HiddenLayerDefinition.cpp
     HidenNeuron.cpp
     MultiLayerPerceptron.cpp
     ../helpers/ActivateFunctions.cpp

@@ -3,10 +3,10 @@
 #include <iostream>
 using namespace std;
 
-MultiLayerPerceptron::MultiLayerPerceptron(vector<int> layersDefinition, int entryNumber) {
-    hiddenLayers.push_back(HidenLayer(entryNumber, layersDefinition[0], sigmoid, sigmoid_derivative, 1));
+MultiLayerPerceptron::MultiLayerPerceptron(vector<HidenLayerDefinition> layersDefinition) {
+    hiddenLayers.push_back(HidenLayer(layersDefinition[0].getHiddenNeuronNumber(), layersDefinition[0].getHiddenNeuronNumber(), layersDefinition[0].getActivation(), layersDefinition[0].getDerivative(), layersDefinition[0].getLearningRate()));
     for(int i = 1; i < layersDefinition.size(); i++) {
-        hiddenLayers.push_back(HidenLayer(layersDefinition[i-1], layersDefinition[i], sigmoid, sigmoid_derivative, 1));
+        hiddenLayers.push_back(HidenLayer(layersDefinition[i-1].getHiddenNeuronNumber(), layersDefinition[i].getHiddenNeuronNumber(), layersDefinition[i].getActivation(), layersDefinition[i].getDerivative(), layersDefinition[i].getLearningRate()));
     }
 }
 

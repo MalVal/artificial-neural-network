@@ -7,5 +7,23 @@ double sigmoid(double c, double x) {
 }
 
 double sigmoid_derivative(double c, double x) {
-    return c * sigmoid(1, x) * (1 - sigmoid(1, x));
+    double s = sigmoid(c, x);
+    return c * s * (1.0 - s);
+}
+
+double identity(double c, double x) {
+    return x;
+}
+
+double identity_derivative(double c, double x) {
+    return 1.0;
+}
+
+double tanh_act(double c, double x) {
+    return c * tanh(x);
+}
+
+double tanh_derivative(double c, double x) {
+    double t = tanh(x);
+    return c * (1.0 - t * t);
 }
