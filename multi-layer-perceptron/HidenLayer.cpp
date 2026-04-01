@@ -11,7 +11,7 @@ HidenLayer::HidenLayer(int entryNumber, int neuronNumber, function<double(double
 {
     random_device rd;
     mt19937 gen(rd());
-    uniform_real_distribution<> dist(-1.0, 1.0);
+    normal_distribution<> dist(0.0, 1.0);
     for(int i = 0; i < neuronNumber; i++) {
         // Weights initialisation
         vector<double> weights;

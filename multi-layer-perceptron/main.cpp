@@ -72,22 +72,37 @@ int main() {
     file.close();
 
     // ARCHITECTURE
-    MultiLayerPerceptron mlp(
-        {
-            HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
-            HidenLayerDefinition(2, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
-            HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative)
-        }
-    );
+    MultiLayerPerceptron *mlp = NULL;
+    /* REGRESSION*/
+    if(choice == 3) {
+        mlp = new MultiLayerPerceptron
+        (
+            {
+                HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                HidenLayerDefinition(10, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), identity, identity_derivative)
+            }
+        );
+    }
+    else {
+        mlp = new MultiLayerPerceptron
+        (
+            {
+                HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                HidenLayerDefinition(5, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative)
+            }
+        );
+    }
 
     // TRAINING
-    mlp.learn(X, D, stod(selectedDataset[3]), stoi(selectedDataset[4]));
+    mlp->learn(X, D, stod(selectedDataset[3]), stoi(selectedDataset[4]));
 
     // DISPLAY RESULTS
     cout << "=== Results ===" << endl;
 
     for (int k = 0; k < (int)X.size(); k++) {
-        vector<double> output = mlp.predict(X[k]);
+        vector<double> output = mlp->predict(X[k]);
 
         // inputs
         for (int i = 0; i < nbInputs; i++) {
@@ -163,7 +178,7 @@ int main() {
             for (double x = x_min; x <= x_max; x += step) {
                 for (double y = y_min; y <= y_max; y += step) {
                     vector<double> input = {x, y};
-                    vector<double> output = mlp.predict(input);
+                    vector<double> output = mlp->predict(input);
 
                     out << x << "," << y;
                     for (double o : output) out << "," << o;
@@ -173,7 +188,7 @@ int main() {
         } else { // 1D
             for (double x = x_min; x <= x_max; x += step) {
                 vector<double> input = {x};
-                vector<double> output = mlp.predict(input);
+                vector<double> output = mlp->predict(input);
 
                 out << x << "," << output[0] << "\n";
             }
