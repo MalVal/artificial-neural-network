@@ -17,7 +17,8 @@ int main() {
         {"../../data/xor.csv", "2", "0.8", "0.001", "2000", "1"},
         {"../../data/table_4_12.csv", "2", "0.5", "0.001", "2000", "1"},
         {"../../data/table_4_14.csv", "2", "1.2", "0.001", "2000", "3"},
-        {"../../data/table_4_17.csv", "1", "0.001", "0.05", "20000", "1"}
+        {"../../data/table_4_17.csv", "1", "0.001", "0.05", "20000", "1"},
+        {"../../data/lentille.csv", "6", "0.001", "0.05", "20000", "3"}
     };
 
     // CHOOSE DATASET
@@ -89,7 +90,7 @@ int main() {
         (
             {
                 HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
-                HidenLayerDefinition(5, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                HidenLayerDefinition(3, stod(selectedDataset[2]), sigmoid, sigmoid_derivative),
                 HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative)
             }
         );

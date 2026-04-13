@@ -14,6 +14,25 @@
 #############################################
 # Rule for compiling CXX files.
 
+rule CXX_COMPILER__mlp_core_unscanned_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\mingw64\bin\C__~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__mlp_core_
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\mingw64\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\mingw64\bin\ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\mingw64\bin\ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling CXX files.
+
 rule CXX_COMPILER__multi-layer-perceptron_unscanned_
   depfile = $DEP_FILE
   deps = gcc
@@ -25,6 +44,25 @@ rule CXX_COMPILER__multi-layer-perceptron_unscanned_
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__multi-layer-perceptron_
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && C:\PROGRA~1\mingw64\bin\C__~1.EXE $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  description = Linking CXX executable $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__multi-layer-perceptron-sign_unscanned_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\mingw64\bin\C__~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX executable.
+
+rule CXX_EXECUTABLE_LINKER__multi-layer-perceptron-sign_
   command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && C:\PROGRA~1\mingw64\bin\C__~1.EXE $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT

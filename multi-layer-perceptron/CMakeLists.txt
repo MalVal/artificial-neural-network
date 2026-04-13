@@ -5,10 +5,10 @@ project(multi-layer-perceptron)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(multi-layer-perceptron)
-
-target_sources(multi-layer-perceptron PRIVATE
-    main.cpp
+# =========================
+# LIBRAIRIE COMMUNE
+# =========================
+add_library(mlp_core STATIC
     HidenLayer.cpp
     HiddenLayerDefinition.cpp
     HidenNeuron.cpp
@@ -16,11 +16,24 @@ target_sources(multi-layer-perceptron PRIVATE
     ../helpers/ActivateFunctions.cpp
 )
 
-target_include_directories(multi-layer-perceptron PRIVATE
+target_include_directories(mlp_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-# To build :
-# cd build
-# cmake ..
-# cmake --build .
+# =========================
+# EXEC 1
+# =========================
+add_executable(multi-layer-perceptron
+    main.cpp
+)
+
+target_link_libraries(multi-layer-perceptron PRIVATE mlp_core)
+
+# =========================
+# EXEC 2
+# =========================
+add_executable(multi-layer-perceptron-sign
+    main-sign.cpp
+)
+
+target_link_libraries(multi-layer-perceptron-sign PRIVATE mlp_core)

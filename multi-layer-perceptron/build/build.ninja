@@ -36,13 +36,72 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/build/
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target mlp_core
+
+
+#############################################
+# Order-only phony target for mlp_core
+
+build cmake_object_order_depends_target_mlp_core: phony || .
+
+build CMakeFiles/mlp_core.dir/HidenLayer.cpp.obj: CXX_COMPILER__mlp_core_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HidenLayer.cpp || cmake_object_order_depends_target_mlp_core
+  DEP_FILE = CMakeFiles\mlp_core.dir\HidenLayer.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\mlp_core.dir
+
+build CMakeFiles/mlp_core.dir/HiddenLayerDefinition.cpp.obj: CXX_COMPILER__mlp_core_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HiddenLayerDefinition.cpp || cmake_object_order_depends_target_mlp_core
+  DEP_FILE = CMakeFiles\mlp_core.dir\HiddenLayerDefinition.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\mlp_core.dir
+
+build CMakeFiles/mlp_core.dir/HidenNeuron.cpp.obj: CXX_COMPILER__mlp_core_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HidenNeuron.cpp || cmake_object_order_depends_target_mlp_core
+  DEP_FILE = CMakeFiles\mlp_core.dir\HidenNeuron.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\mlp_core.dir
+
+build CMakeFiles/mlp_core.dir/MultiLayerPerceptron.cpp.obj: CXX_COMPILER__mlp_core_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/MultiLayerPerceptron.cpp || cmake_object_order_depends_target_mlp_core
+  DEP_FILE = CMakeFiles\mlp_core.dir\MultiLayerPerceptron.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\mlp_core.dir
+
+build CMakeFiles/mlp_core.dir/C_/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp.obj: CXX_COMPILER__mlp_core_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp || cmake_object_order_depends_target_mlp_core
+  DEP_FILE = CMakeFiles\mlp_core.dir\C_\Users\ironv\Documents\HEPL\MASI1\Q2\Math\RNA\artificial-neural-network\helpers\ActivateFunctions.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\mlp_core.dir\C_\Users\ironv\Documents\HEPL\MASI1\Q2\Math\RNA\artificial-neural-network\helpers
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target mlp_core
+
+
+#############################################
+# Link the static library libmlp_core.a
+
+build libmlp_core.a: CXX_STATIC_LIBRARY_LINKER__mlp_core_ CMakeFiles/mlp_core.dir/HidenLayer.cpp.obj CMakeFiles/mlp_core.dir/HiddenLayerDefinition.cpp.obj CMakeFiles/mlp_core.dir/HidenNeuron.cpp.obj CMakeFiles/mlp_core.dir/MultiLayerPerceptron.cpp.obj CMakeFiles/mlp_core.dir/C_/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp.obj
+  OBJECT_DIR = CMakeFiles\mlp_core.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libmlp_core.a
+  TARGET_PDB = mlp_core.a.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target multi-layer-perceptron
 
 
 #############################################
 # Order-only phony target for multi-layer-perceptron
 
-build cmake_object_order_depends_target_multi-layer-perceptron: phony || .
+build cmake_object_order_depends_target_multi-layer-perceptron: phony || cmake_object_order_depends_target_mlp_core
 
 build CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/main.cpp || cmake_object_order_depends_target_multi-layer-perceptron
   DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\main.cpp.obj.d
@@ -50,41 +109,6 @@ build CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj: CXX_COMPILER__multi-la
   INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
   OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
   OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir
-
-build CMakeFiles/multi-layer-perceptron.dir/HidenLayer.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HidenLayer.cpp || cmake_object_order_depends_target_multi-layer-perceptron
-  DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\HidenLayer.cpp.obj.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
-  OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
-  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir
-
-build CMakeFiles/multi-layer-perceptron.dir/HiddenLayerDefinition.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HiddenLayerDefinition.cpp || cmake_object_order_depends_target_multi-layer-perceptron
-  DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\HiddenLayerDefinition.cpp.obj.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
-  OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
-  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir
-
-build CMakeFiles/multi-layer-perceptron.dir/HidenNeuron.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/HidenNeuron.cpp || cmake_object_order_depends_target_multi-layer-perceptron
-  DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\HidenNeuron.cpp.obj.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
-  OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
-  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir
-
-build CMakeFiles/multi-layer-perceptron.dir/MultiLayerPerceptron.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/MultiLayerPerceptron.cpp || cmake_object_order_depends_target_multi-layer-perceptron
-  DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\MultiLayerPerceptron.cpp.obj.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
-  OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
-  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir
-
-build CMakeFiles/multi-layer-perceptron.dir/C_/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp.obj: CXX_COMPILER__multi-layer-perceptron_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp || cmake_object_order_depends_target_multi-layer-perceptron
-  DEP_FILE = CMakeFiles\multi-layer-perceptron.dir\C_\Users\ironv\Documents\HEPL\MASI1\Q2\Math\RNA\artificial-neural-network\helpers\ActivateFunctions.cpp.obj.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
-  OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
-  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron.dir\C_\Users\ironv\Documents\HEPL\MASI1\Q2\Math\RNA\artificial-neural-network\helpers
 
 
 # =============================================================================
@@ -94,14 +118,47 @@ build CMakeFiles/multi-layer-perceptron.dir/C_/Users/ironv/Documents/HEPL/MASI1/
 #############################################
 # Link the executable multi-layer-perceptron.exe
 
-build multi-layer-perceptron.exe: CXX_EXECUTABLE_LINKER__multi-layer-perceptron_ CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj CMakeFiles/multi-layer-perceptron.dir/HidenLayer.cpp.obj CMakeFiles/multi-layer-perceptron.dir/HiddenLayerDefinition.cpp.obj CMakeFiles/multi-layer-perceptron.dir/HidenNeuron.cpp.obj CMakeFiles/multi-layer-perceptron.dir/MultiLayerPerceptron.cpp.obj CMakeFiles/multi-layer-perceptron.dir/C_/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/helpers/ActivateFunctions.cpp.obj
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build multi-layer-perceptron.exe: CXX_EXECUTABLE_LINKER__multi-layer-perceptron_ CMakeFiles/multi-layer-perceptron.dir/main.cpp.obj | libmlp_core.a || libmlp_core.a
+  LINK_LIBRARIES = libmlp_core.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\multi-layer-perceptron.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_FILE = multi-layer-perceptron.exe
   TARGET_IMPLIB = libmulti-layer-perceptron.dll.a
   TARGET_PDB = multi-layer-perceptron.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target multi-layer-perceptron-sign
+
+
+#############################################
+# Order-only phony target for multi-layer-perceptron-sign
+
+build cmake_object_order_depends_target_multi-layer-perceptron-sign: phony || cmake_object_order_depends_target_mlp_core
+
+build CMakeFiles/multi-layer-perceptron-sign.dir/main-sign.cpp.obj: CXX_COMPILER__multi-layer-perceptron-sign_unscanned_ C$:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/main-sign.cpp || cmake_object_order_depends_target_multi-layer-perceptron-sign
+  DEP_FILE = CMakeFiles\multi-layer-perceptron-sign.dir\main-sign.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron
+  OBJECT_DIR = CMakeFiles\multi-layer-perceptron-sign.dir
+  OBJECT_FILE_DIR = CMakeFiles\multi-layer-perceptron-sign.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target multi-layer-perceptron-sign
+
+
+#############################################
+# Link the executable multi-layer-perceptron-sign.exe
+
+build multi-layer-perceptron-sign.exe: CXX_EXECUTABLE_LINKER__multi-layer-perceptron-sign_ CMakeFiles/multi-layer-perceptron-sign.dir/main-sign.cpp.obj | libmlp_core.a || libmlp_core.a
+  LINK_LIBRARIES = libmlp_core.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\multi-layer-perceptron-sign.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = multi-layer-perceptron-sign.exe
+  TARGET_IMPLIB = libmulti-layer-perceptron-sign.dll.a
+  TARGET_PDB = multi-layer-perceptron-sign.exe.dbg
 
 
 #############################################
@@ -129,7 +186,11 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build mlp_core: phony libmlp_core.a
+
 build multi-layer-perceptron: phony multi-layer-perceptron.exe
+
+build multi-layer-perceptron-sign: phony multi-layer-perceptron-sign.exe
 
 # =============================================================================
 # Folder targets.
@@ -139,7 +200,7 @@ build multi-layer-perceptron: phony multi-layer-perceptron.exe
 #############################################
 # Folder: C:/Users/ironv/Documents/HEPL/MASI1/Q2/Math/RNA/artificial-neural-network/multi-layer-perceptron/build
 
-build all: phony multi-layer-perceptron.exe
+build all: phony libmlp_core.a multi-layer-perceptron.exe multi-layer-perceptron-sign.exe
 
 # =============================================================================
 # Built-in targets
