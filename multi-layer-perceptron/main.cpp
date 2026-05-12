@@ -78,8 +78,9 @@ int main() {
     if(choice == 3) {
         mlp = new MultiLayerPerceptron
         (
+            nbInputs,
             {
-                HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                //HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
                 HidenLayerDefinition(10, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
                 HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), identity, identity_derivative)
             }
@@ -88,8 +89,9 @@ int main() {
     else {
         mlp = new MultiLayerPerceptron
         (
+            nbInputs,
             {
-                HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
+                //HidenLayerDefinition(nbInputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative), 
                 HidenLayerDefinition(3, stod(selectedDataset[2]), sigmoid, sigmoid_derivative),
                 HidenLayerDefinition(nbOutputs, stod(selectedDataset[2]), sigmoid, sigmoid_derivative)
             }

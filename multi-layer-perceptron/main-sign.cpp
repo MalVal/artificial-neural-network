@@ -95,9 +95,10 @@ int main() {
     double lr = 0.1;
 
     MultiLayerPerceptron* mlp = new MultiLayerPerceptron(
+        42,
         {
-            HidenLayerDefinition(42, lr, sigmoid, sigmoid_derivative),
-            HidenLayerDefinition(20, lr, sigmoid, sigmoid_derivative),
+            //HidenLayerDefinition(42, lr, sigmoid, sigmoid_derivative),
+            //HidenLayerDefinition(20, lr, sigmoid, sigmoid_derivative),
             HidenLayerDefinition(10, lr, sigmoid, sigmoid_derivative),
             HidenLayerDefinition(5,  lr, sigmoid, sigmoid_derivative)
         }
@@ -153,20 +154,6 @@ int main() {
     double valAcc = 100.0 * correctVal / X_val.size();
     cout << "Precision validation : " << correctVal << "/" << X_val.size()
          << " (" << valAcc << "%)" << endl;
-
-    // Affichage de la matrice de confusion
-    cout << "\nMatrice de confusion (lignes = attendu, colonnes = predit) :" << endl;
-    cout << "     ";
-    for (int i = 0; i < nbClasses; i++) cout << classNames[i] << "   ";
-    cout << endl;
-
-    for (int i = 0; i < nbClasses; i++) {
-        cout << classNames[i] << " :  ";
-        for (int j = 0; j < nbClasses; j++) {
-            cout << confusion[i][j] << "   ";
-        }
-        cout << endl;
-    }
 
     // Précision par classe
     cout << "\nPrecision par classe :" << endl;

@@ -3,8 +3,8 @@
 #include <iostream>
 using namespace std;
 
-MultiLayerPerceptron::MultiLayerPerceptron(vector<HidenLayerDefinition> layersDefinition) {
-    hiddenLayers.push_back(HidenLayer(layersDefinition[0].getHiddenNeuronNumber(), layersDefinition[0].getHiddenNeuronNumber(), layersDefinition[0].getActivation(), layersDefinition[0].getDerivative(), layersDefinition[0].getLearningRate()));
+MultiLayerPerceptron::MultiLayerPerceptron(int inputSize, vector<HidenLayerDefinition> layersDefinition) {
+    hiddenLayers.push_back(HidenLayer(inputSize, layersDefinition[0].getHiddenNeuronNumber(), layersDefinition[0].getActivation(), layersDefinition[0].getDerivative(), layersDefinition[0].getLearningRate()));
     for(int i = 1; i < layersDefinition.size(); i++) {
         hiddenLayers.push_back(HidenLayer(layersDefinition[i-1].getHiddenNeuronNumber(), layersDefinition[i].getHiddenNeuronNumber(), layersDefinition[i].getActivation(), layersDefinition[i].getDerivative(), layersDefinition[i].getLearningRate()));
     }
@@ -13,10 +13,6 @@ MultiLayerPerceptron::MultiLayerPerceptron(vector<HidenLayerDefinition> layersDe
 void MultiLayerPerceptron::learn(vector<vector<double>> X, vector<vector<double>> D, double threshold, int maxIter) {
     if(X.size() != D.size()) {
         cerr << "Error: X and D must have the same number of samples" << endl;
-        return;
-    }
-    if(X[0].size() != (size_t)hiddenLayers[0].getEntryNumber()) {
-        cerr << "Error: x size does not match entry number" << endl;
         return;
     }
     if(D[0].size() != (size_t)hiddenLayers.back().getNeuronNumber()) {
